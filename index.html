@@ -1009,129 +1009,129 @@
 
       </div>
 
+      <!-- Scatola principale con SOLO il testo di benvenuto -->
       <div class="space-intro">
         <span>Welcome to Cosmic Club! This is an interactive canvas for web space explorers. Join the space canvas and let your custom artwork float around in space!</span>
+      </div>
+
+      <!-- I tre pulsanti ora sono fuori dalla scatola, separati e ordinati -->
+      <button class="join-toggle-btn" id="joinToggleBtn" style="margin-top: 4px;">
+        <span><i class="fa-solid fa-rocket" style="margin-right: 8px;"></i> HOW TO JOIN COSMIC CLUB</span>
+        <i class="fa-solid fa-chevron-down" id="joinChevron"></i>
+      </button>
+
+      <div class="join-details-box" id="joinDetailsBox">
+        <p>To place your website in orbit, create your own space symbol and submit your information using the dedicated Google Form!</p>
         
-        <button class="join-toggle-btn" id="joinToggleBtn">
-          <span><i class="fa-solid fa-rocket" style="margin-right: 8px;"></i> HOW TO JOIN COSMIC CLUB</span>
-          <i class="fa-solid fa-chevron-down" id="joinChevron"></i>
-        </button>
+        <p><strong>Requirements & Requested Data:</strong></p>
+        <ul>
+          <li><strong>Site Name:</strong> The display name of your site (without the <code>.neocities.org</code> suffix).</li>
+          <li><strong>Website URL:</strong> The direct link to your personal website or blog.</li>
+          <li><strong>Custom Symbol / Artwork:</strong> A space-themed icon (e.g., planet, star, comet, rocket, UFO, astronaut, alien, ...).
+            <ul class="sub-list">
+              <li>Dimensions: <strong>200x200 pixels</strong></li>
+              <li>Background: <strong>Transparent (PNG or GIF format)</strong></li>
+            </ul>
+          </li>
+          <li><strong>Artwork Upload & Link:</strong> Please attach your image file directly in the form AND provide the direct URL of the image hosted on your site.</li>
+          <li><strong>Tags:</strong> A few keywords to describe your site or style, separated by commas (e.g., blog, art, games,...).</li>
+          <li><strong>88x31 Button:</strong> The HTML code for your 88x31 button (e.g., <code>&lt;a href="..."&gt;&lt;img src="..." /&gt;&lt;/a&gt;</code>) OR simply the direct URL of your 88x31 button image.</li>
+        </ul>
 
-        <div class="join-details-box" id="joinDetailsBox">
-          <p>To place your website in orbit, create your own space symbol and submit your information using the dedicated Google Form!</p>
-          
-          <p><strong>Requirements & Requested Data:</strong></p>
-          <ul>
-            <li><strong>Site Name:</strong> The display name of your site (without the <code>.neocities.org</code> suffix).</li>
-            <li><strong>Website URL:</strong> The direct link to your personal website or blog.</li>
-            <li><strong>Custom Symbol / Artwork:</strong> A space-themed icon (e.g., planet, star, comet, rocket, UFO, astronaut, alien, ...).
-              <ul class="sub-list">
-                <li>Dimensions: <strong>200x200 pixels</strong></li>
-                <li>Background: <strong>Transparent (PNG or GIF format)</strong></li>
-              </ul>
-            </li>
-            <li><strong>Artwork Upload & Link:</strong> Please attach your image file directly in the form AND provide the direct URL of the image hosted on your site.</li>
-            <li><strong>Tags:</strong> A few keywords to describe your site or style, separated by commas (e.g., blog, art, games,...).</li>
-            <li><strong>88x31 Button:</strong> The HTML code for your 88x31 button (e.g., <code>&lt;a href="..."&gt;&lt;img src="..." /&gt;&lt;/a&gt;</code>) OR simply the direct URL of your 88x31 button image.</li>
-          </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcf4DHnkoxVoJAfsJMZJK9g1kcZWQdPGJMML1a9IapVuMEZw/viewform?usp=sharing&ouid=103924903681606752118" target="_blank" class="form-cta-btn">
+          <span><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit via Google Form</span>
+        </a>
 
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcf4DHnkoxVoJAfsJMZJK9g1kcZWQdPGJMML1a9IapVuMEZw/viewform?usp=sharing&ouid=103924903681606752118" target="_blank" class="form-cta-btn">
-            <span><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit via Google Form</span>
-          </a>
-
-          <div class="contact-subtext">
-            <span>Have questions or need information? Contact me via email at <a href="mailto:Seea-star@proton.me">Seea-star@proton.me</a> or leave a message on the <a href="https://cosmic-s.atabook.org/" target="_blank">Guestbook</a>!</span>
-          </div>
+        <div class="contact-subtext">
+          <span>Have questions or need information? Contact me via email at <a href="mailto:Seea-star@proton.me">Seea-star@proton.me</a> or leave a message on the <a href="https://cosmic-s.atabook.org/" target="_blank">Guestbook</a>!</span>
         </div>
+      </div>
 
-        <!-- NUOVO PULSANTE COMMENITI / CHAT -->
-        <button class="join-toggle-btn" id="commentsToggleBtn">
-          <span><i class="fa-solid fa-comments" style="margin-right: 8px;"></i> COSMIC CLUB COMMENTS</span>
-          <i class="fa-solid fa-chevron-down" id="commentsChevron"></i>
-        </button>
+      <button class="join-toggle-btn" id="commentsToggleBtn" style="margin-top: 4px;">
+        <span><i class="fa-solid fa-comments" style="margin-right: 8px;"></i> COSMIC CLUB COMMENTS</span>
+        <i class="fa-solid fa-chevron-down" id="commentsChevron"></i>
+      </button>
 
-        <div class="join-details-box" id="commentsDetailsBox">
-          <p>Leave a message or comment about the Cosmic Club webring!</p>
+      <div class="join-details-box" id="commentsDetailsBox">
+        <p>Leave a message or comment about the Cosmic Club webring!</p>
+        
+        <script src="https://giscus.app/client.js"
+                data-repo="Seea-Star/test"
+                data-repo-id="R_kgDOUchfQg"
+                data-category="General"
+                data-category-id="DIC_kwDOUchfQs4DKTgd"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="gruvbox_dark"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+
+      <button class="join-toggle-btn" id="buttonsToggleBtn" style="margin-top: 4px;">
+        <span><i class="fa-solid fa-link" style="margin-right: 8px;"></i> GET BUTTON / WIDGET</span>
+        <i class="fa-solid fa-chevron-down" id="buttonsChevron"></i>
+      </button>
+
+      <div class="join-details-box" id="buttonsDetailsBox">
+        <div class="button-section-wrapper">
           
-          <script src="https://giscus.app/client.js"
-                  data-repo="Seea-Star/test"
-                  data-repo-id="R_kgDOUchfQg"
-                  data-category="General"
-                  data-category-id="DIC_kwDOUchfQs4DKTgd"
-                  data-mapping="pathname"
-                  data-strict="0"
-                  data-reactions-enabled="1"
-                  data-emit-metadata="0"
-                  data-input-position="top"
-                  data-theme="gruvbox_dark"
-                  data-lang="en"
-                  crossorigin="anonymous"
-                  async>
-          </script>
-        </div>
-
-        <button class="join-toggle-btn" id="buttonsToggleBtn">
-          <span><i class="fa-solid fa-link" style="margin-right: 8px;"></i> GET BUTTON / WIDGET</span>
-          <i class="fa-solid fa-chevron-down" id="buttonsChevron"></i>
-        </button>
-
-        <div class="join-details-box" id="buttonsDetailsBox">
-          <div class="button-section-wrapper">
+          <div class="button-block">
+            <p><strong>88x31 Classic Button:</strong></p>
+            <p style="font-size: 0.88rem; opacity: 0.8;">Grab the standard button to place on your site!</p>
             
-            <div class="button-block">
-              <p><strong>88x31 Classic Button:</strong></p>
-              <p style="font-size: 0.88rem; opacity: 0.8;">Grab the standard button to place on your site!</p>
-              
-              <div style="display: flex; align-items: center; gap: 12px; margin-top: 4px;">
-                <img src="CosmicClubButton.gif" alt="Cosmic Club Button" style="width: 88px; height: 31px; border: none;">
-              </div>
-
-              <textarea readonly id="classicButtonCode" class="code-textarea" style="height: 55px; margin-top: 4px;" onclick="this.select()">&lt;a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank"&gt;&lt;img src="https://cosmic-seea.neocities.org/CosmicClubButton.gif" alt="Cosmic Club" width="88" height="31"&gt;&lt;/a&gt;</textarea>
-              
-              <button class="copy-code-btn" id="copyClassicBtn">
-                <i class="fa-regular fa-copy"></i> <span>Copy Code</span>
-              </button>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: 4px;">
+              <img src="CosmicClubButton.gif" alt="Cosmic Club Button" style="width: 88px; height: 31px; border: none;">
             </div>
 
-            <hr style="border: none; border-top: 1px dashed rgba(225, 218, 185, 0.3);">
-
-            <div class="button-block">
-              <p><strong>Custom Member Widget:</strong></p>
-              <p style="font-size: 0.88rem; opacity: 0.8;">Paste the URL of your symbol and customize sizes to generate your widget!</p>
-
-              <div class="custom-generator-container">
-                
-                <div class="generator-preview-side">
-                  <a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank" class="cosmic-club-widget" id="widgetLivePreview">
-                    <img id="widgetCustomImg" src="https://cosmic-seea.neocities.org/200%C3%97200Symbol.png" alt="Cosmic Club Member">
-                  </a>
-                  <span style="font-size: 0.75rem; opacity: 0.7; margin-top: 4px;">Live Preview (Click to test)</span>
-                </div>
-
-                <div class="generator-controls-side">
-                  <label style="font-size: 0.85rem; font-weight: 700;">Widget Container Size (px):</label>
-                  <input type="number" id="widgetSizeInput" class="custom-input-field" value="200" step="10">
-
-                  <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Image Size (px):</label>
-                  <input type="number" id="imageSizeInput" class="custom-input-field" value="150" step="10">
-
-                  <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Your Symbol Image URL:</label>
-                  <input type="text" id="customSymbolInput" class="custom-input-field" placeholder="Paste your image link here..." value="https://cosmic-seea.neocities.org/200%C3%97200Symbol.png">
-
-                  <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Generated Widget Code:</label>
-                  <textarea readonly id="customWidgetCode" class="code-textarea" onclick="this.select()"></textarea>
-
-                  <button class="copy-code-btn" id="copyCustomBtn">
-                    <i class="fa-regular fa-copy"></i> <span>Copy Code</span>
-                  </button>
-                </div>
-
-              </div>
-            </div>
-
+            <textarea readonly id="classicButtonCode" class="code-textarea" style="height: 55px; margin-top: 4px;" onclick="this.select()">&lt;a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank"&gt;&lt;img src="https://cosmic-seea.neocities.org/CosmicClubButton.gif" alt="Cosmic Club" width="88" height="31"&gt;&lt;/a&gt;</textarea>
+            
+            <button class="copy-code-btn" id="copyClassicBtn">
+              <i class="fa-regular fa-copy"></i> <span>Copy Code</span>
+            </button>
           </div>
-        </div>
 
+          <hr style="border: none; border-top: 1px dashed rgba(225, 218, 185, 0.3);">
+
+          <div class="button-block">
+            <p><strong>Custom Member Widget:</strong></p>
+            <p style="font-size: 0.88rem; opacity: 0.8;">Paste the URL of your symbol and customize sizes to generate your widget!</p>
+
+            <div class="custom-generator-container">
+              
+              <div class="generator-preview-side">
+                <a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank" class="cosmic-club-widget" id="widgetLivePreview">
+                  <img id="widgetCustomImg" src="https://cosmic-seea.neocities.org/200%C3%97200Symbol.png" alt="Cosmic Club Member">
+                </a>
+                <span style="font-size: 0.75rem; opacity: 0.7; margin-top: 4px;">Live Preview (Click to test)</span>
+              </div>
+
+              <div class="generator-controls-side">
+                <label style="font-size: 0.85rem; font-weight: 700;">Widget Container Size (px):</label>
+                <input type="number" id="widgetSizeInput" class="custom-input-field" value="200" step="10">
+
+                <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Image Size (px):</label>
+                <input type="number" id="imageSizeInput" class="custom-input-field" value="150" step="10">
+
+                <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Your Symbol Image URL:</label>
+                <input type="text" id="customSymbolInput" class="custom-input-field" placeholder="Paste your image link here..." value="https://cosmic-seea.neocities.org/200%C3%97200Symbol.png">
+
+                <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Generated Widget Code:</label>
+                <textarea readonly id="customWidgetCode" class="code-textarea" onclick="this.select()"></textarea>
+
+                <button class="copy-code-btn" id="copyCustomBtn">
+                  <i class="fa-regular fa-copy"></i> <span>Copy Code</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
@@ -1458,7 +1458,6 @@
       }
     });
 
-    // SCRIPT PER IL NUOVO PULSANTE DEI COMMENTI
     const commentsToggleBtn = document.getElementById('commentsToggleBtn');
     const commentsDetailsBox = document.getElementById('commentsDetailsBox');
     const commentsChevron = document.getElementById('commentsChevron');
@@ -1613,4 +1612,4 @@
   </script>
 
 </body>
-              </html>
+          </html>
