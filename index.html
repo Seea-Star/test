@@ -1,51 +1,1616 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina di Test - Commenti Giscus</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        h1 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        .comment-section {
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMIC CLUB</title>
+    <link rel="icon" type="image/png" href="https://cosmic-seea.neocities.org/stamp-8.png">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #000000;
+      color: #E1DAB9;
+      font-family: 'Quicksand', sans-serif;
+      padding: 30px 10px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .site-wrapper {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .top-banner {
+      background-color: #000000;
+      background-image: 
+        linear-gradient(rgba(225, 218, 185, 0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 218, 185, 0.18) 1px, transparent 1px);
+      background-size: 20px 20px;
+      border: 2px solid #E1DAB9;
+      border-radius: 20px;
+      padding: 12px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 4px 4px 0px #E1DAB9;
+    }
+
+    .top-banner h1 { 
+      font-size: 1.8rem; 
+      font-weight: 800; 
+      letter-spacing: 2px; 
+      color: #E1DAB9;
+    }
+
+    .back-btn:active, .control-btn:active, .command-visit-btn:active, .reset-galaxy-btn:active, .search-bar input:focus {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 0px 0px 0px #E1DAB9 !important;
+    }
+
+    .space-container {
+      background-color: #000000;
+      background-image: 
+        linear-gradient(rgba(225, 218, 185, 0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 218, 185, 0.18) 1px, transparent 1px);
+      background-size: 20px 20px;
+      border: 2px solid #E1DAB9;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 6px 6px 0px #E1DAB9;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .search-bar {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-bar input {
+      width: 100%;
+      background: #000000;
+      border: 2px solid #E1DAB9;
+      border-radius: 14px;
+      padding: 12px 15px 12px 45px;
+      color: #E1DAB9;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 4px 4px 0px #E1DAB9;
+      outline: none;
+      transition: background 0.2s ease;
+    }
+
+    .search-bar input::placeholder {
+      color: rgba(225, 218, 185, 0.5);
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #E1DAB9;
+      opacity: 0.8;
+    }
+
+    .galaxy-board {
+      width: 100%;
+      height: 450px;
+      border: 2px solid #E1DAB9;
+      border-radius: 16px;
+      position: relative;
+      background-color: #000000;
+      overflow: hidden;
+      box-shadow: 4px 4px 0px #E1DAB9;
+      cursor: grab;
+    }
+
+    .galaxy-board:active {
+      cursor: grabbing;
+    }
+
+    .galaxy-canvas-world {
+      position: absolute;
+      width: 5000px;
+      height: 5000px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+      user-select: none;
+      background-color: #000000;
+      background-image: 
+        radial-gradient(#FFFFFF 1.3px, transparent 1.3px),
+        radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px),
+        radial-gradient(#FFFFFF 0.7px, transparent 0.7px);
+      background-size: 110px 110px, 160px 160px, 75px 75px;
+      background-position: 0 0, 50px 80px, 25px 35px;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @keyframes bgPulse {
+      0% { filter: brightness(0.9); }
+      100% { filter: brightness(1.2); }
+    }
+
+    .cosmic-sticker-link {
+      position: absolute;
+      display: inline-block;
+      font-size: 2.2rem;
+      filter: none;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease, opacity 0.3s ease;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .cosmic-sticker-link img.sticker-img {
+      width: 48px;
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+
+    .cosmic-sticker-link:hover {
+      transform: scale(1.3) translateY(-4px);
+      filter: drop-shadow(0px 0px 10px #E1DAB9);
+    }
+
+    .cosmic-sticker-link.dimmed {
+      opacity: 0.2;
+      filter: grayscale(100%) drop-shadow(1px 1px 0px rgba(225,218,185,0.2));
+    }
+
+    .cosmic-sticker-link.highlighted {
+      transform: scale(1.4);
+      filter: drop-shadow(0px 0px 14px #E1DAB9);
+    }
+
+    .shooting-comet-1 {
+      position: absolute;
+      width: 48px;
+      height: auto;
+      pointer-events: none;
+      animation: shootComet1 24s linear infinite;
+      z-index: 5;
+    }
+    @keyframes shootComet1 {
+      0% { top: -40px; left: -40px; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 5040px; left: 5040px; opacity: 0; }
+    }
+
+    .shooting-comet-2 {
+      position: absolute;
+      width: 48px;
+      height: auto;
+      pointer-events: none;
+      animation: shootComet2 30s linear infinite;
+      animation-delay: 5s;
+      z-index: 5;
+    }
+    @keyframes shootComet2 {
+      0% { top: 5040px; left: -40px; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: -40px; left: 5040px; opacity: 0; }
+    }
+
+    .anim-float { animation: float 4s ease-in-out infinite; }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .anim-drift { animation: drift 6s ease-in-out infinite; }
+    @keyframes drift {
+      0% { transform: translateX(0px) translateY(0px); }
+      50% { transform: translateX(12px) translateY(-6px); }
+      100% { transform: translateX(0px) translateY(0px); }
+    }
+
+    .anim-pulse { animation: oracleMotion 5s ease-in-out infinite; }
+    @keyframes oracleMotion {
+      0% { transform: scale(1) rotate(0deg) translateY(0px); }
+      25% { transform: scale(1.1) rotate(8deg) translateY(-6px); }
+      50% { transform: scale(1.05) rotate(-6deg) translateY(-12px); }
+      75% { transform: scale(1.15) rotate(4deg) translateY(-4px); }
+      100% { transform: scale(1) rotate(0deg) translateY(0px); }
+    }
+
+    .reset-galaxy-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      z-index: 20;
+      transition: transform 0.1s ease, background 0.1s ease, color 0.1s ease;
+    }
+
+    .reset-galaxy-btn:hover {
+      background: #E1DAB9;
+      color: #000000;
+    }
+
+    .galaxy-radar {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      width: 90px;
+      height: 90px;
+      background: rgba(0, 0, 0, 0.85);
+      border: 2px solid #E1DAB9;
+      border-radius: 12px;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      z-index: 20;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .radar-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(225, 218, 185, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 218, 185, 0.15) 1px, transparent 1px);
+      background-size: 15px 15px;
+    }
+
+    .radar-blip {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: #E1DAB9;
+      border-radius: 50%;
+      box-shadow: 0 0 4px #E1DAB9;
+      transform: translate(-50%, -50%);
+    }
+
+    .galaxy-controls {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+    }
+
+    .control-btn {
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .control-btn:hover {
+      background: #E1DAB9;
+      color: #000000;
+      transform: scale(1.05);
+    }
+
+    .command-screen {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      background: #000000;
+      border: 2px solid #E1DAB9;
+      border-radius: 14px;
+      z-index: 100;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 6px 6px 0px #E1DAB9;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .command-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .command-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed rgba(225, 218, 185, 0.3);
+      padding-bottom: 8px;
+    }
+
+    .command-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #E1DAB9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
+    .command-close-btn {
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      transition: transform 0.1s ease, background 0.1s ease, color 0.1s ease;
+    }
+
+    .command-close-btn:hover {
+      background: #E1DAB9;
+      color: #000000;
+    }
+
+    .command-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .command-viewer {
+      width: 85px;
+      height: 85px;
+      background: #000000;
+      border: 2px solid #E1DAB9;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 3px 3px 0px #E1DAB9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .command-viewer img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+
+    .command-viewer::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: rgba(225, 218, 185, 0.6);
+      box-shadow: 0 0 6px #E1DAB9;
+      animation: scanBeam 2s linear infinite;
+    }
+
+    @keyframes scanBeam {
+      0% { top: 0%; }
+      100% { top: 100%; }
+    }
+
+    .command-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .command-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: rgba(225, 218, 185, 0.1);
+      color: #E1DAB9;
+      border: 1px solid rgba(225, 218, 185, 0.4);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .command-button-box {
+      width: 88px;
+      height: 31px;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .command-button-box a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.15s ease;
+    }
+
+    .command-button-box a:hover {
+      transform: scale(1.05);
+    }
+
+    .command-button-box img {
+      width: 88px;
+      height: 31px;
+      object-fit: contain;
+      border: none;
+      display: block;
+    }
+
+    .galaxy-board:fullscreen {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .space-intro {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 700;
+      color: #E1DAB9;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #E1DAB9;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .space-intro a {
+      color: #E1DAB9;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .join-toggle-btn {
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 3px 3px 0px #E1DAB9;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+      margin-top: 4px;
+    }
+
+    .join-toggle-btn:hover {
+      background: #E1DAB9;
+      color: #000000;
+    }
+
+    .join-toggle-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #E1DAB9;
+    }
+
+    .join-details-box {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      padding: 18px;
+      background: rgba(225, 218, 185, 0.05);
+      border: 1px dashed rgba(225, 218, 185, 0.4);
+      border-radius: 10px;
+      margin-top: 6px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .join-details-box.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .join-details-box ul {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .join-details-box li {
+      line-height: 1.5;
+    }
+
+    .sub-list {
+      margin-top: 4px;
+      padding-left: 18px !important;
+      list-style-type: circle;
+    }
+
+    .form-cta-btn {
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 3px 3px 0px #E1DAB9;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      align-self: flex-start;
+      cursor: pointer;
+    }
+
+    .form-cta-btn:hover {
+      background: #E1DAB9;
+      color: #000000;
+    }
+
+    .form-cta-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #E1DAB9;
+    }
+
+    code {
+      background: rgba(225, 218, 185, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.88rem;
+    }
+
+    .contact-subtext {
+      font-size: 0.88rem;
+      opacity: 0.9;
+      border-top: 1px dashed rgba(225, 218, 185, 0.3);
+      padding-top: 12px;
+      margin-top: 6px;
+    }
+
+    .button-section-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .button-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .custom-generator-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .generator-preview-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .generator-controls-side {
+      flex: 1;
+      min-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .custom-input-field {
+      width: 100%;
+      background: #000000;
+      border: 2px solid #E1DAB9;
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: #E1DAB9;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      outline: none;
+    }
+
+    .code-textarea {
+      width: 100%;
+      height: 180px;
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 10px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 0.78rem;
+      resize: vertical;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      outline: none;
+      cursor: pointer;
+      white-space: pre;
+    }
+
+    .copy-code-btn {
+      align-self: flex-start;
+      background: #000000;
+      color: #E1DAB9;
+      border: 2px solid #E1DAB9;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 2px 2px 0px #E1DAB9;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+      margin-top: 2px;
+    }
+
+    .copy-code-btn:hover {
+      background: #E1DAB9;
+      color: #000000;
+    }
+
+    .copy-code-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0px 0px 0px #E1DAB9;
+    }
+
+    .cosmic-club-widget {
+      width: 200px;
+      height: 200px;
+      background-color: #000000;
+      border: 3px solid #E1DAB9;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0px #E1DAB9;
+      
+      background-image: 
+        radial-gradient(#FFFFFF 1.3px, transparent 1.3px),
+        radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px),
+        radial-gradient(#FFFFFF 0.7px, transparent 0.7px);
+      background-size: 110px 110px, 160px 160px, 75px 75px;
+      background-position: 0 0, 50px 80px, 25px 35px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      cursor: pointer;
+    }
+
+    .cosmic-club-widget:active, .cosmic-club-widget.clicked {
+      transform: translate(4px, 4px) !important;
+      box-shadow: 2px 2px 0px #E1DAB9 !important;
+    }
+
+    .cosmic-club-widget img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    .space-footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      opacity: 0.8;
+      border-top: 1px dashed rgba(225, 218, 185, 0.3);
+      margin-top: 10px;
+    }
+
+    .space-footer a {
+      color: #E1DAB9;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Pagina di Test di Cosmic-S 🚀</h1>
-    <p>Questa è una pagina di prova per verificare che i commenti di Giscus funzionino alla perfezione.</p>
-    <p>Scorri in fondo per lasciare un commento usando il tuo account GitHub!</p>
+  <div class="site-wrapper">
 
-    <!-- Sezione dei commenti Giscus -->
-    <div class="comment-section">
-        <script src="https://giscus.app/client.js"
-                data-repo="Seea-Star/test"
-                data-repo-id="R_kgDOUchfQg"
-                data-category="General"
-                data-category-id="DIC_kwDOUchfQs4DKTgd"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="top"
-                data-theme="gruvbox_dark"
-                data-lang="en"
-                crossorigin="anonymous"
-                async>
-        </script>
+    <header class="top-banner">
+      <h1>COSMIC CLUB</h1>
+    </header>
+
+    <div class="space-container">
+
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="galaxySearchInput" placeholder="Search by site name or tag...">
+      </div>
+
+      <div class="galaxy-board" id="galaxyBoard">
+        
+        <button class="reset-galaxy-btn" id="resetBtn" title="Center galaxy">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+
+        <div class="galaxy-canvas-world" id="galaxyWorld">
+          <img src="meteorite.png" alt="Meteorite" class="shooting-comet-1">
+          <img src="ezgif-733e927ae4e467d8.gif" alt="UFO" class="shooting-comet-2">
+
+          <!-- DISPOSIZIONE NATURALE E SPARSATISSIMA INTORNO AL CENTRO -->
+          <!-- TUO SITO (COSMIC-S) -->
+          <a href="https://cosmic-seea.neocities.org/" target="_blank" data-name="Cosmic-S" data-tags="minimal dark, cozy web, personal site, photo gallery, stories, blog" data-id="CosmicS" data-date="2026-09-14" data-button="https://cosmic-seea.neocities.org/button.gif" data-img="Senza titolo 13_20260914185659.png" class="cosmic-sticker-link anim-float" style="top: 2420px; left: 2560px; animation-delay: 0s;">
+            <img src="Senza titolo 13_20260914185659.png" alt="Cosmic-S" class="sticker-img">
+          </a>
+
+          <!-- IRRELEVANT REVIEWS -->
+          <a href="https://irrelevantreviews.neocities.org" target="_blank" data-name="Irrelevant Reviews" data-tags="games, retro, reviews" data-id="Ex1" data-date="2026-09-01" data-button="https://irrelevantreviews.neocities.org/assets/btn.gif" data-img="https://irrelevantreviews.neocities.org/assets/planet.png" class="cosmic-sticker-link anim-drift" style="top: 2210px; left: 2340px; animation-delay: 1.2s;">
+            <img src="https://irrelevantreviews.neocities.org/assets/planet.png" alt="Irrelevant Reviews" class="sticker-img">
+          </a>
+          
+          <!-- RICHARDNYXON -->
+          <a href="https://richardnyxon.neocities.org/" target="_blank" data-name="richardnyxon" data-tags="blog, art, cooking" data-id="Ex2" data-date="2026-10-01" data-button="https://file.garden/aIfIEBfH0QVghEeJ/buttons/richardnyxon.png" data-img="https://richardnyxon.neocities.org/i/planet.png" class="cosmic-sticker-link anim-pulse" style="top: 2790px; left: 2180px; animation-delay: 2.5s;">
+            <img src="https://richardnyxon.neocities.org/i/planet.png" alt="richardnyxon" class="sticker-img">
+          </a>
+
+          <!-- WARMAGAMING -->
+          <a href="https://warmagaming.neocities.org/" target="_blank" data-name="warmagaming" data-tags="gaming, tabletopgames, videogames" data-id="Ex4" data-date="2026-10-02" data-button="https://warmagaming.neocities.org/images/web/button.gif" data-img="https://warmagaming.neocities.org/images/web/warmagaming-planet.png" class="cosmic-sticker-link anim-drift" style="top: 2280px; left: 2840px; animation-delay: 1.8s;">
+            <img src="https://warmagaming.neocities.org/images/web/warmagaming-planet.png" alt="warmagaming" class="sticker-img">
+          </a>
+
+          <!-- MXTPS & DLTNS -->
+          <a href="https://mixtapesanddialtones.neocities.org" target="_blank" data-name="mxtps&dltns" data-tags="personal, photolog, grunge" data-id="Ex3" data-date="2026-09-03" data-button="https://mixtapesanddialtones.neocities.org/tash-mtdt2.gif" data-img="https://mixtapesanddialtones.neocities.org/planet-mxtpsdltnes.png" class="cosmic-sticker-link anim-float" style="top: 2650px; left: 2890px; animation-delay: 0.8s;">
+            <img src="https://mixtapesanddialtones.neocities.org/planet-mxtpsdltnes.png" alt="mxtps&dltns" class="sticker-img">
+          </a>
+
+          <!-- LAVENDERIVY -->
+          <a href="https://lavenderivy.com" target="_blank" data-name="lavenderivy" data-tags="18+, music, physical media, photography" data-id="Ex5" data-date="2026-09-05" data-button="https://lavenderivy.com/mybutton.png" data-img="https://lavenderivy.com/alien.png" class="cosmic-sticker-link anim-float" style="top: 1980px; left: 2680px; animation-delay: 0.4s;">
+            <img src="https://lavenderivy.com/alien.png" alt="lavenderivy" class="sticker-img">
+          </a>
+
+          <!-- I, JUST ANOTHER ANIME MAN -->
+          <a href="https://animeman.us" target="_blank" data-name="i, just another anime man" data-tags="18+, VR, music, blog, art, personal" data-id="Ex6" data-date="2026-09-06" data-button="https://animeman.us/media/ijaam-bluebutton.gif" data-img="https://animeman.us/media2/planetjaam.png" class="cosmic-sticker-link anim-drift" style="top: 3120px; left: 2620px; animation-delay: 1.6s;">
+            <img src="https://animeman.us/media2/planetjaam.png" alt="i, just another anime man" class="sticker-img">
+          </a>
+
+          <!-- LUNABELLE -->
+          <a href="https://lunabelle.neocities.org/" target="_blank" data-name="Lunabelle" data-tags="pink, cute, soft, pixel, personal, kawaii" data-id="Ex7" data-date="2026-09-07" data-button="https://file.garden/ajaF2K-8TDwH7_jo/lunabelle2.gif" data-img="https://lunabelle.neocities.org/images/myplanet.png" class="cosmic-sticker-link anim-pulse" style="top: 2540px; left: 1960px; animation-delay: 2.1s;">
+            <img src="https://lunabelle.neocities.org/images/myplanet.png" alt="Lunabelle" class="sticker-img">
+          </a>
+
+          <!-- THE GOOD INTERNET -->
+          <a href="https://keatonjazz.neocities.org/" target="_blank" data-name="The Good Internet" data-tags="Links, Curation, Art, Internet, Games, Collections" data-id="Ex8" data-date="2026-09-08" data-button="https://keatonjazz.neocities.org/images/ButtonGoodInternet_88x31_02.gif" data-img="https://keatonjazz.neocities.org/images/GI_Nebula_01.png" class="cosmic-sticker-link anim-float" style="top: 2410px; left: 3180px; animation-delay: 1.1s;">
+            <img src="https://keatonjazz.neocities.org/images/GI_Nebula_01.png" alt="The Good Internet" class="sticker-img">
+          </a>
+
+          <!-- RHZARTIST -->
+          <a href="https://rhzartist.neocities.org/" target="_blank" data-name="rhzartist" data-tags="art, snakes, autism, blog, personal" data-id="Ex9" data-date="2026-09-09" data-button="https://rhzartist.neocities.org/icons/rhza-button_88-31.gif" data-img="https://rhzartist.neocities.org/icons/rhza_planet.png" class="cosmic-sticker-link anim-drift" style="top: 1840px; left: 2220px; animation-delay: 2.8s;">
+            <img src="https://rhzartist.neocities.org/icons/rhza_planet.png" alt="rhzartist" class="sticker-img">
+          </a>
+
+          <!-- TODAYIMSADLIKEThesky -->
+          <a href="https://todayimsadlikethesky.neocities.org/" target="_blank" data-name="todayimsadlikethesky" data-tags="art, blog, thoughts, personal" data-id="Ex10" data-date="2026-09-10" data-button="https://todayimsadlikethesky.neocities.org/images/blebttn.gif" data-img="https://todayimsadlikethesky.neocities.org/images/todayimsadlikethesky.png" class="cosmic-sticker-link anim-pulse" style="top: 2980px; left: 3040px; animation-delay: 0.5s;">
+            <img src="https://todayimsadlikethesky.neocities.org/images/todayimsadlikethesky.png" alt="todayimsadlikethesky" class="sticker-img">
+          </a>
+
+          <!-- RAMCST -->
+          <a href="https://ramcst.neocities.org/" target="_blank" data-name="ramcst" data-tags="blog, music, spanish, horror" data-id="Ex11" data-date="2026-09-11" data-button="https://ramcst.neocities.org/general/files/ramcst.gif" data-img="https://ramcst.neocities.org/general/files/planetcst.png" class="cosmic-sticker-link anim-float" style="top: 2050px; left: 3020px; animation-delay: 1.9s;">
+            <img src="https://ramcst.neocities.org/general/files/planetcst.png" alt="ramcst" class="sticker-img">
+          </a>
+
+          <!-- AMALEIHNA -->
+          <a href="https://amaleihna.neocities.org/" target="_blank" data-name="Amaleihna" data-tags="18+, Art, writing, mermaids, blogging, plurality" data-id="Ex12" data-date="2026-09-12" data-button="https://amaleihna.neocities.org/Images/World%20of%20Amaleihna.png" data-img="https://amaleihna.neocities.org/Images/yellowplanet-ezgif.com-webp-to-gif-converter.gif" class="cosmic-sticker-link anim-drift" style="top: 2910px; left: 1980px; animation-delay: 0.3s;">
+            <img src="https://amaleihna.neocities.org/Images/yellowplanet-ezgif.com-webp-to-gif-converter.gif" alt="Amaleihna" class="sticker-img">
+          </a>
+
+          <!-- DIZZYDEEZY -->
+          <a href="https://dizzydeezy.neocities.org" target="_blank" data-name="DizzyDeezy" data-tags="18+, Personal, Games, Music, Anime, Films" data-id="Ex13" data-date="2026-09-13" data-button="https://dizzydeezy.neocities.org/img/button.png" data-img="https://dizzydeezy.neocities.org/img/cosmic.png" class="cosmic-sticker-link anim-pulse" style="top: 2820px; left: 2410px; animation-delay: 1.4s;">
+            <img src="https://dizzydeezy.neocities.org/img/cosmic.png" alt="DizzyDeezy" class="sticker-img">
+          </a>
+
+          <!-- THE OFFWORLD TOURIST -->
+          <a href="https://offworldtourist.neocities.org" target="_blank" data-name="The Offworld Tourist" data-tags="art, music, retro games, space, star frontiers rpg, alternate reality" data-id="Ex14" data-date="2026-09-14" data-button="https://offworldtourist.neocities.org/icons/offworldButton.gif" data-img="https://offworldtourist.neocities.org/icons/Asteroid_200.gif" class="cosmic-sticker-link anim-float" style="top: 3310px; left: 2420px; animation-delay: 2.2s;">
+            <img src="https://offworldtourist.neocities.org/icons/Asteroid_200.gif" alt="The Offworld Tourist" class="sticker-img">
+          </a>
+
+          <!-- NINIFRAME -->
+          <a href="https://niniframe.neocities.org/" target="_blank" data-name="Niniframe" data-tags="personal, blog, art, cinema" data-id="Ex15" data-date="2026-09-15" data-button="https://niniframe.neocities.org/imgs/button.gif" data-img="https://niniframe.neocities.org/imgs/NF.png" class="cosmic-sticker-link anim-drift" style="top: 2360px; left: 1720px; animation-delay: 0.7s;">
+            <img src="https://niniframe.neocities.org/imgs/NF.png" alt="Niniframe" class="sticker-img">
+          </a>
+
+          <!-- DIZZT'S SHOAL -->
+          <a href="https://dizzt3942.neocities.org/" target="_blank" data-name="Dizzt's Shoal" data-tags="18+, programming, review, games, blog, computer" data-id="Ex16" data-date="2026-09-16" data-button="https://dizzt3942.neocities.org/assets/icon/dizztsshoal.gif" data-img="https://dizzt3942.neocities.org/assets/icon/planetdizzt.gif" class="cosmic-sticker-link anim-pulse" style="top: 2620px; left: 3280px; animation-delay: 1.5s;">
+            <img src="https://dizzt3942.neocities.org/assets/icon/planetdizzt.gif" alt="Dizzt's Shoal" class="sticker-img">
+          </a>
+
+          <!-- PERSTAR -->
+          <a href="https://perstar.neocities.org/" target="_blank" data-name="perstar" data-tags="games, programming, computer, personal, blog, mousemaze" data-id="Ex17" data-date="2026-09-17" data-button="https://perstar.neocities.org/perstarbutton.png" data-img="https://perstar.neocities.org/cosmicicon.png" class="cosmic-sticker-link anim-float" style="top: 1750px; left: 2490px; animation-delay: 2.4s;">
+            <img src="https://perstar.neocities.org/cosmicicon.png" alt="perstar" class="sticker-img">
+          </a>
+
+          <!-- ANY.COM -->
+          <a href="https://anypup.neocities.org/" target="_blank" data-name="Any.com" data-tags="art, ocs, writing, 2000s, fun, mobile" data-id="Ex18" data-date="2026-09-18" data-button="https://anypup.neocities.org/Any-Button.png" data-img="https://anypup.neocities.org/IMG/Pix/anyplanet.gif" class="cosmic-sticker-link anim-drift" style="top: 3280px; left: 1910px; animation-delay: 1.0s;">
+            <img src="https://anypup.neocities.org/IMG/Pix/anyplanet.gif" alt="Any.com" class="sticker-img">
+          </a>
+
+          <!-- MOCHII'S CORNER -->
+          <a href="https://mochiiscorner.neocities.org/" target="_blank" data-name="Mochii's Corner" data-tags="Pink, Dessert, Personal" data-id="Ex19" data-date="2026-09-19" data-button="https://mochiiscorner.neocities.org/images/MochiisButton.png" data-img="https://mochiiscorner.neocities.org/images/MochiisPlanet.png" class="cosmic-sticker-link anim-pulse" style="top: 1820px; left: 2810px; animation-delay: 0.2s;">
+            <img src="https://mochiiscorner.neocities.org/images/MochiisPlanet.png" alt="Mochii's Corner" class="sticker-img">
+          </a>
+
+          <!-- SEGNAPOSTO DIVERSIFICATI E SPARSI A RAGGIERA NON REGOLARE -->
+          <a href="https://enmity.neocities.org/" target="_blank" data-name="enmity" data-tags="18+, personal, videogames, pixel art, blog" data-id="Ex20" data-date="2026-09-19" data-button="https://file.garden/agJFzJkh3SXB2_1R/Img/Button/btjp.gif" data-img="https://enmity.neocities.org/Img/Cl/planet.png" class="cosmic-sticker-link anim-pulse" style="top: 2230px; left: 2150px; animation-delay: 0.2s;">
+            <img src="https://enmity.neocities.org/Img/Cl/planet.png" alt="enmity" class="sticker-img">
+          </a>
+
+          <a href="https://www.tinchapel.com" target="_blank" data-name="TinChapel" data-tags="community, world building, chapel, fiction, satire, comedy" data-id="Ex21" data-date="2026-09-19" data-button="https://raw.githubusercontent.com/Seea-Star/Cosmic-S-Club/refs/heads/main/Senza%20titolo%2056_20261018075157.png" data-img="https://tinchapel.neocities.org/cosmic-chapel.png" class="cosmic-sticker-link anim-pulse" style="top: 2150px; left: 2510px; animation-delay: 0.2s;">
+            <img src="https://tinchapel.neocities.org/cosmic-chapel.png" alt="TinChapel" class="sticker-img">
+          </a>
+
+          <a href="https://ichomancer.com/" target="_blank" data-name="Ichomancer" data-tags="Ichomancer, gaming, development, music, art, FPV" data-id="Ex22" data-date="2026-09-19" data-button="https://ichomancer.com/ichobutton.gif" data-img="https://ichomancer.com/Ichoplanet.gif" class="cosmic-sticker-link anim-pulse" style="top: 2480px; left: 2750px; animation-delay: 0.2s;">
+            <img src="https://ichomancer.com/Ichoplanet.gif" alt="Ichomancer" class="sticker-img">
+          </a>
+
+          <a href="https://koidylovesvelial.neocities.org/" target="_blank" data-name="koidylovesvelial" data-tags="art, ocs, lowquality, baddesign, weird" data-id="Ex23" data-date="2026-09-19" data-button="https://koidylovesvelial.neocities.org/assets/tumblr_edc7992b83ceb76ed0d632442fa09fbe_883d94bd_100.jpg" data-img="https://koidylovesvelial.neocities.org/assets/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F701_20261023234100.png" class="cosmic-sticker-link anim-pulse" style="top: 2680px; left: 2320px; animation-delay: 0.2s;">
+            <img src="https://koidylovesvelial.neocities.org/assets/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F701_20261023234100.png" alt="koidylovesvelial" class="sticker-img">
+          </a>
+
+          <a href="https://crypty.neocities.org/" target="_blank" data-name="crypty's brain" data-tags="diary, books, cats, outdoors, media" data-id="Ex24" data-date="2026-09-19" data-button="https://crypty.neocities.org/cryptyButtonNEW.gif" data-img="https://crypty.neocities.org/otherpics/crypty-cosmic-club.png" class="cosmic-sticker-link anim-pulse" style="top: 2840px; left: 2820px; animation-delay: 0.2s;">
+            <img src="https://crypty.neocities.org/otherpics/crypty-cosmic-club.png" alt="crypty's brain" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex25" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 1620px; left: 2310px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex26" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 3450px; left: 2710px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex27" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 2710px; left: 1610px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex28" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 2210px; left: 3380px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex29" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 1940px; left: 1810px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex30" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 3020px; left: 1680px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex31" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 1680px; left: 2980px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex32" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 3180px; left: 3210px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex33" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 1510px; left: 2640px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+
+          <a href="#" target="_blank" data-name="site name" data-tags="tag" data-id="Ex34" data-date="2026-09-19" data-button="88×31buttoneg.png" data-img="200×200Symbol.png" class="cosmic-sticker-link anim-pulse" style="top: 3410px; left: 2280px; animation-delay: 0.2s;">
+            <img src="200×200Symbol.png" alt="site name" class="sticker-img">
+          </a>
+          
+        </div>
+
+        <div class="command-screen" id="commandScreen">
+          <div class="command-header">
+            <div class="command-title" id="commandTitle">SIGNAL TITLE</div>
+            <button class="command-close-btn" id="commandCloseBtn" title="Close screen">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="command-body">
+            <div class="command-viewer" id="commandViewer">🪐</div>
+
+            <div class="command-tags" id="commandTags">
+            </div>
+
+            <div class="command-button-box">
+              <a href="#" id="commandVisitLink">
+                <img id="commandBannerImg" src="" alt="88x31 button">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="galaxy-radar" id="galaxyRadar">
+          <div class="radar-grid"></div>
+          <div class="radar-blip" id="radarBlip"></div>
+        </div>
+
+        <div class="galaxy-controls">
+          <button class="control-btn" id="randomBtn" title="Random item">
+            <i class="fa-solid fa-dice"></i>
+          </button>
+          <button class="control-btn" id="zoomOutBtn" title="Zoom Out">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <button class="control-btn" id="zoomInBtn" title="Zoom In">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <button class="control-btn" id="fullscreenBtn" title="Fullscreen">
+            <i class="fa-solid fa-expand" id="fullscreenIcon"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="space-intro">
+        <span>Welcome to Cosmic Club! This is an interactive canvas for web space explorers. Join the space canvas and let your custom artwork float around in space!</span>
+        
+        <button class="join-toggle-btn" id="joinToggleBtn">
+          <span><i class="fa-solid fa-rocket" style="margin-right: 8px;"></i> HOW TO JOIN COSMIC CLUB</span>
+          <i class="fa-solid fa-chevron-down" id="joinChevron"></i>
+        </button>
+
+        <div class="join-details-box" id="joinDetailsBox">
+          <p>To place your website in orbit, create your own space symbol and submit your information using the dedicated Google Form!</p>
+          
+          <p><strong>Requirements & Requested Data:</strong></p>
+          <ul>
+            <li><strong>Site Name:</strong> The display name of your site (without the <code>.neocities.org</code> suffix).</li>
+            <li><strong>Website URL:</strong> The direct link to your personal website or blog.</li>
+            <li><strong>Custom Symbol / Artwork:</strong> A space-themed icon (e.g., planet, star, comet, rocket, UFO, astronaut, alien, ...).
+              <ul class="sub-list">
+                <li>Dimensions: <strong>200x200 pixels</strong></li>
+                <li>Background: <strong>Transparent (PNG or GIF format)</strong></li>
+              </ul>
+            </li>
+            <li><strong>Artwork Upload & Link:</strong> Please attach your image file directly in the form AND provide the direct URL of the image hosted on your site.</li>
+            <li><strong>Tags:</strong> A few keywords to describe your site or style, separated by commas (e.g., blog, art, games,...).</li>
+            <li><strong>88x31 Button:</strong> The HTML code for your 88x31 button (e.g., <code>&lt;a href="..."&gt;&lt;img src="..." /&gt;&lt;/a&gt;</code>) OR simply the direct URL of your 88x31 button image.</li>
+          </ul>
+
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcf4DHnkoxVoJAfsJMZJK9g1kcZWQdPGJMML1a9IapVuMEZw/viewform?usp=sharing&ouid=103924903681606752118" target="_blank" class="form-cta-btn">
+            <span><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit via Google Form</span>
+          </a>
+
+          <div class="contact-subtext">
+            <span>Have questions or need information? Contact me via email at <a href="mailto:Seea-star@proton.me">Seea-star@proton.me</a> or leave a message on the <a href="https://cosmic-s.atabook.org/" target="_blank">Guestbook</a>!</span>
+          </div>
+        </div>
+
+        <!-- NUOVO PULSANTE COMMENITI / CHAT -->
+        <button class="join-toggle-btn" id="commentsToggleBtn">
+          <span><i class="fa-solid fa-comments" style="margin-right: 8px;"></i> COSMIC CLUB COMMENTS</span>
+          <i class="fa-solid fa-chevron-down" id="commentsChevron"></i>
+        </button>
+
+        <div class="join-details-box" id="commentsDetailsBox">
+          <p>Leave a message or comment about the Cosmic Club webring!</p>
+          
+          <script src="https://giscus.app/client.js"
+                  data-repo="Seea-Star/test"
+                  data-repo-id="R_kgDOUchfQg"
+                  data-category="General"
+                  data-category-id="DIC_kwDOUchfQs4DKTgd"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="top"
+                  data-theme="gruvbox_dark"
+                  data-lang="en"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+        </div>
+
+        <button class="join-toggle-btn" id="buttonsToggleBtn">
+          <span><i class="fa-solid fa-link" style="margin-right: 8px;"></i> GET BUTTON / WIDGET</span>
+          <i class="fa-solid fa-chevron-down" id="buttonsChevron"></i>
+        </button>
+
+        <div class="join-details-box" id="buttonsDetailsBox">
+          <div class="button-section-wrapper">
+            
+            <div class="button-block">
+              <p><strong>88x31 Classic Button:</strong></p>
+              <p style="font-size: 0.88rem; opacity: 0.8;">Grab the standard button to place on your site!</p>
+              
+              <div style="display: flex; align-items: center; gap: 12px; margin-top: 4px;">
+                <img src="CosmicClubButton.gif" alt="Cosmic Club Button" style="width: 88px; height: 31px; border: none;">
+              </div>
+
+              <textarea readonly id="classicButtonCode" class="code-textarea" style="height: 55px; margin-top: 4px;" onclick="this.select()">&lt;a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank"&gt;&lt;img src="https://cosmic-seea.neocities.org/CosmicClubButton.gif" alt="Cosmic Club" width="88" height="31"&gt;&lt;/a&gt;</textarea>
+              
+              <button class="copy-code-btn" id="copyClassicBtn">
+                <i class="fa-regular fa-copy"></i> <span>Copy Code</span>
+              </button>
+            </div>
+
+            <hr style="border: none; border-top: 1px dashed rgba(225, 218, 185, 0.3);">
+
+            <div class="button-block">
+              <p><strong>Custom Member Widget:</strong></p>
+              <p style="font-size: 0.88rem; opacity: 0.8;">Paste the URL of your symbol and customize sizes to generate your widget!</p>
+
+              <div class="custom-generator-container">
+                
+                <div class="generator-preview-side">
+                  <a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank" class="cosmic-club-widget" id="widgetLivePreview">
+                    <img id="widgetCustomImg" src="https://cosmic-seea.neocities.org/200%C3%97200Symbol.png" alt="Cosmic Club Member">
+                  </a>
+                  <span style="font-size: 0.75rem; opacity: 0.7; margin-top: 4px;">Live Preview (Click to test)</span>
+                </div>
+
+                <div class="generator-controls-side">
+                  <label style="font-size: 0.85rem; font-weight: 700;">Widget Container Size (px):</label>
+                  <input type="number" id="widgetSizeInput" class="custom-input-field" value="200" step="10">
+
+                  <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Image Size (px):</label>
+                  <input type="number" id="imageSizeInput" class="custom-input-field" value="150" step="10">
+
+                  <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Your Symbol Image URL:</label>
+                  <input type="text" id="customSymbolInput" class="custom-input-field" placeholder="Paste your image link here..." value="https://cosmic-seea.neocities.org/200%C3%97200Symbol.png">
+
+                  <label style="font-size: 0.85rem; font-weight: 700; margin-top: 4px;">Generated Widget Code:</label>
+                  <textarea readonly id="customWidgetCode" class="code-textarea" onclick="this.select()"></textarea>
+
+                  <button class="copy-code-btn" id="copyCustomBtn">
+                    <i class="fa-regular fa-copy"></i> <span>Copy Code</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
+    <div class="space-footer">
+      Created by Cosmic-S<br>
+      <a href="https://cosmic-seea.neocities.org" target="_blank">https://cosmic-seea.neocities.org</a>
+    </div>
+
+  </div>
+
+  <script>
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playBeep(freq = 440, type = 'sine', duration = 0.08) {
+      try {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playDiceSound() {
+      try {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.06);
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.2);
+      } catch (e) {}
+    }
+
+    function playWarpSound() {
+      try {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } catch (e) {}
+    }
+
+    const board = document.getElementById('galaxyBoard');
+    const world = document.getElementById('galaxyWorld');
+    const radarBlip = document.getElementById('radarBlip');
+    const searchInput = document.getElementById('galaxySearchInput');
+    
+    const commandScreen = document.getElementById('commandScreen');
+    const commandViewer = document.getElementById('commandViewer');
+    const commandTitle = document.getElementById('commandTitle');
+    const commandTags = document.getElementById('commandTags');
+    const commandVisitLink = document.getElementById('commandVisitLink');
+    const commandBannerImg = document.getElementById('commandBannerImg');
+    const commandCloseBtn = document.getElementById('commandCloseBtn');
+
+    let isDragging = false;
+    let startX, startY;
+    let currentX = 0;
+    let currentY = 0;
+    let scale = 0.45;
+
+    const links = world.querySelectorAll('.cosmic-sticker-link');
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+
+      links.forEach(link => {
+        const name = link.getAttribute('data-name').toLowerCase();
+        const tags = link.getAttribute('data-tags') ? link.getAttribute('data-tags').toLowerCase() : '';
+
+        if (term === '') {
+          link.classList.remove('dimmed', 'highlighted');
+        } else if (name.includes(term) || tags.includes(term)) {
+          link.classList.remove('dimmed');
+          link.classList.add('highlighted');
+          
+          const targetTop = parseFloat(link.style.top);
+          const targetLeft = parseFloat(link.style.left);
+          currentX = -(targetLeft - 2500);
+          currentY = -(targetTop - 2500);
+          scale = 0.9;
+          updateWorldTransform(true);
+        } else {
+          link.classList.add('dimmed');
+          link.classList.remove('highlighted');
+        }
+      });
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        playWarpSound();
+        
+        commandBannerImg.src = '';
+        commandBannerImg.style.display = 'none';
+
+        const customImg = link.getAttribute('data-img');
+        if (customImg) {
+          commandViewer.innerHTML = `<img src="${customImg}" alt="${link.getAttribute('data-name')}">`;
+        } else {
+          commandViewer.textContent = link.textContent;
+        }
+
+        commandTitle.textContent = link.getAttribute('data-name');
+
+        const rawTags = link.getAttribute('data-tags');
+        commandTags.innerHTML = '';
+        if (rawTags) {
+          rawTags.split(',').forEach(t => {
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'command-tag';
+            tagSpan.textContent = '#' + t.trim();
+            commandTags.appendChild(tagSpan);
+          });
+        }
+
+        const isPlaceholder = (link.getAttribute('data-name') === 'site name');
+        if (isPlaceholder) {
+          commandVisitLink.setAttribute('href', '#');
+          commandVisitLink.onclick = function(ev) { ev.preventDefault(); };
+        } else {
+          commandVisitLink.setAttribute('href', link.href);
+          commandVisitLink.onclick = null;
+        }
+
+        const newButtonSrc = link.getAttribute('data-button');
+        if (newButtonSrc) {
+          const tempImg = new Image();
+          tempImg.onload = function() {
+            commandBannerImg.src = newButtonSrc;
+            commandBannerImg.style.display = 'block';
+          };
+          tempImg.src = newButtonSrc;
+        }
+
+        commandScreen.classList.add('active');
+      });
+    });
+
+    commandCloseBtn.addEventListener('click', () => {
+      playBeep(300, 'sine', 0.06);
+      commandScreen.classList.remove('active');
+    });
+
+    function clamp(val, min, max) {
+      return Math.max(min, Math.min(max, val));
+    }
+
+    function updateWorldTransform(withTransition = false) {
+      const boardWidth = board.clientWidth || 800;
+      const boardHeight = board.clientHeight || 450;
+
+      const canvasWidth = 5000;
+      const canvasHeight = 5000;
+
+      const scaledWidth = canvasWidth * scale;
+      const scaledHeight = canvasHeight * scale;
+
+      const maxDragX = Math.max(0, (scaledWidth - boardWidth) / 2);
+      const maxDragY = Math.max(0, (scaledHeight - boardHeight) / 2);
+
+      currentX = clamp(currentX, -maxDragX, maxDragX);
+      currentY = clamp(currentY, -maxDragY, maxDragY);
+
+      if (withTransition) {
+        world.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+      } else {
+        world.style.transition = 'none';
+      }
+
+      world.style.transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px)) scale(${scale})`;
+
+      const blipX = maxDragX > 0 ? 45 - (currentX / maxDragX) * 35 : 45;
+      const blipY = maxDragY > 0 ? 45 - (currentY / maxDragY) * 35 : 45;
+      
+      radarBlip.style.left = `${blipX}px`;
+      radarBlip.style.top = `${blipY}px`;
+    }
+
+    updateWorldTransform();
+
+    board.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.galaxy-controls') || e.target.closest('.galaxy-radar') || e.target.closest('.command-screen') || e.target.closest('.reset-galaxy-btn')) return;
+      isDragging = true;
+      startX = e.clientX - currentX;
+      startY = e.clientY - currentY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      currentX = e.clientX - startX;
+      currentY = e.clientY - startY;
+      updateWorldTransform(false);
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    board.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.galaxy-controls') || e.target.closest('.galaxy-radar') || e.target.closest('.command-screen') || e.target.closest('.reset-galaxy-btn')) return;
+      isDragging = true;
+      startX = e.touches[0].clientX - currentX;
+      startY = e.touches[0].clientY - currentY;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX - startX;
+      currentY = e.touches[0].clientY - startY;
+      updateWorldTransform(false);
+    });
+
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    const resetBtn = document.getElementById('resetBtn');
+    resetBtn.addEventListener('click', () => {
+      playBeep(450, 'sine', 0.08);
+      currentX = 0;
+      currentY = 0;
+      scale = 0.45;
+      searchInput.value = '';
+      links.forEach(l => l.classList.remove('dimmed', 'highlighted'));
+      updateWorldTransform(true);
+    });
+
+    document.getElementById('zoomInBtn').addEventListener('click', () => {
+      playBeep(600, 'sine', 0.06);
+      if (scale < 1.8) { scale += 0.2; updateWorldTransform(false); }
+    });
+
+    document.getElementById('zoomOutBtn').addEventListener('click', () => {
+      playBeep(300, 'sine', 0.06);
+      if (scale > 0.15) { scale -= 0.2; updateWorldTransform(false); }
+    });
+
+    board.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0 && scale < 1.8) scale += 0.08;
+      else if (e.deltaY > 0 && scale > 0.15) scale -= 0.08;
+      updateWorldTransform(false);
+    }, { passive: false });
+
+    document.getElementById('randomBtn').addEventListener('click', () => {
+      playDiceSound();
+      if (links.length > 0) {
+        const randomIndex = Math.floor(Math.random() * links.length);
+        const targetLink = links[randomIndex];
+        const targetTop = parseFloat(targetLink.style.top);
+        const targetLeft = parseFloat(targetLink.style.left);
+
+        currentX = -(targetLeft - 2500);
+        currentY = -(targetTop - 2500);
+        scale = 0.9;
+        updateWorldTransform(true);
+      }
+    });
+
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+
+    fullscreenBtn.addEventListener('click', () => {
+      playBeep(500, 'sine', 0.08);
+      if (!document.fullscreenElement) {
+        board.requestFullscreen().catch(err => { alert(`Fullscreen error: ${err.message}`); });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        fullscreenIcon.classList.remove('fa-expand');
+        fullscreenIcon.classList.add('fa-compress');
+      } else {
+        fullscreenIcon.classList.remove('fa-compress');
+        fullscreenIcon.classList.add('fa-expand');
+      }
+    });
+
+    const joinToggleBtn = document.getElementById('joinToggleBtn');
+    const joinDetailsBox = document.getElementById('joinDetailsBox');
+    const joinChevron = document.getElementById('joinChevron');
+
+    joinToggleBtn.addEventListener('click', () => {
+      playBeep(400, 'sine', 0.06);
+      joinDetailsBox.classList.toggle('active');
+      if (joinDetailsBox.classList.contains('active')) {
+        joinChevron.classList.remove('fa-chevron-down');
+        joinChevron.classList.add('fa-chevron-up');
+      } else {
+        joinChevron.classList.remove('fa-chevron-up');
+        joinChevron.classList.add('fa-chevron-down');
+      }
+    });
+
+    // SCRIPT PER IL NUOVO PULSANTE DEI COMMENTI
+    const commentsToggleBtn = document.getElementById('commentsToggleBtn');
+    const commentsDetailsBox = document.getElementById('commentsDetailsBox');
+    const commentsChevron = document.getElementById('commentsChevron');
+
+    commentsToggleBtn.addEventListener('click', () => {
+      playBeep(400, 'sine', 0.06);
+      commentsDetailsBox.classList.toggle('active');
+      if (commentsDetailsBox.classList.contains('active')) {
+        commentsChevron.classList.remove('fa-chevron-down');
+        commentsChevron.classList.add('fa-chevron-up');
+      } else {
+        commentsChevron.classList.remove('fa-chevron-up');
+        commentsChevron.classList.add('fa-chevron-down');
+      }
+    });
+
+    const buttonsToggleBtn = document.getElementById('buttonsToggleBtn');
+    const buttonsDetailsBox = document.getElementById('buttonsDetailsBox');
+    const buttonsChevron = document.getElementById('buttonsChevron');
+
+    buttonsToggleBtn.addEventListener('click', () => {
+      playBeep(400, 'sine', 0.06);
+      buttonsDetailsBox.classList.toggle('active');
+      if (buttonsDetailsBox.classList.contains('active')) {
+        buttonsChevron.classList.remove('fa-chevron-down');
+        buttonsChevron.classList.add('fa-chevron-up');
+      } else {
+        buttonsChevron.classList.remove('fa-chevron-up');
+        buttonsChevron.classList.add('fa-chevron-down');
+      }
+    });
+
+    const widgetSizeInput = document.getElementById('widgetSizeInput');
+    const imageSizeInput = document.getElementById('imageSizeInput');
+    const customSymbolInput = document.getElementById('customSymbolInput');
+    const widgetCustomImg = document.getElementById('widgetCustomImg');
+    const customWidgetCode = document.getElementById('customWidgetCode');
+    const widgetLivePreview = document.getElementById('widgetLivePreview');
+
+    function updateWidgetGenerator() {
+      let size = parseInt(widgetSizeInput.value, 10);
+      if (isNaN(size)) size = 200;
+
+      let imgSize = parseInt(imageSizeInput.value, 10);
+      if (isNaN(imgSize)) imgSize = 150;
+
+      const imgUrl = customSymbolInput.value.trim() || 'LINK_DELLA_TUA_IMMAGINE_QUI';
+      
+      const borderRadius = Math.round(size * (20 / 300));
+      const borderWidth = Math.max(2, Math.round(size * (3 / 300)));
+      const shadowOffset = Math.max(3, Math.round(size * (6 / 300)));
+      const shadowActiveOffset = Math.max(1, Math.round(size * (2 / 300)));
+
+      widgetLivePreview.style.width = `${size}px`;
+      widgetLivePreview.style.height = `${size}px`;
+      widgetLivePreview.style.borderRadius = `${borderRadius}px`;
+      widgetLivePreview.style.borderWidth = `${borderWidth}px`;
+      widgetLivePreview.style.boxShadow = `${shadowOffset}px ${shadowOffset}px 0px #E1DAB9`;
+
+      widgetCustomImg.style.width = `${imgSize}px`;
+      widgetCustomImg.style.height = `${imgSize}px`;
+      widgetCustomImg.src = imgUrl;
+
+      const generatedHTML = `<style>
+  .cosmic-club-widget {
+    width: ${size}px;
+    height: ${size}px;
+    background-color: #000000;
+    border: ${borderWidth}px solid #E1DAB9;
+    border-radius: ${borderRadius}px;
+    box-shadow: ${shadowOffset}px ${shadowOffset}px 0px #E1DAB9;
+    background-image: 
+      radial-gradient(#FFFFFF 1.3px, transparent 1.3px),
+      radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px),
+      radial-gradient(#FFFFFF 0.7px, transparent 0.7px);
+    background-size: 110px 110px, 160px 160px, 75px 75px;
+    background-position: 0 0, 50px 80px, 25px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  .cosmic-club-widget:active {
+    transform: translate(4px, 4px) !important;
+    box-shadow: ${shadowActiveOffset}px ${shadowActiveOffset}px 0px #E1DAB9 !important;
+  }
+  .cosmic-club-widget img {
+    width: ${imgSize}px;
+    height: ${imgSize}px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+  }
+</style>
+
+<a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank" class="cosmic-club-widget">
+  <img src="${imgUrl}" alt="Cosmic Club Member">
+</a>`;
+
+      customWidgetCode.value = generatedHTML;
+    }
+
+    widgetSizeInput.addEventListener('input', updateWidgetGenerator);
+    widgetSizeInput.addEventListener('change', updateWidgetGenerator);
+
+    imageSizeInput.addEventListener('input', updateWidgetGenerator);
+    imageSizeInput.addEventListener('change', updateWidgetGenerator);
+
+    customSymbolInput.addEventListener('input', updateWidgetGenerator);
+    updateWidgetGenerator();
+
+    widgetLivePreview.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      playBeep(520, 'sine', 0.08);
+      this.classList.add('clicked');
+
+      setTimeout(() => {
+        this.classList.remove('clicked');
+        window.open(targetUrl, '_blank');
+      }, 150);
+    });
+
+    function setupCopyButton(btnId, textareaId) {
+      const btn = document.getElementById(btnId);
+      const textarea = document.getElementById(textareaId);
+
+      btn.addEventListener('click', () => {
+        textarea.select();
+        navigator.clipboard.writeText(textarea.value).then(() => {
+          playBeep(700, 'sine', 0.1);
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied!</span>';
+          btn.style.background = '#E1DAB9';
+          btn.style.color = '#000000';
+
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '#000000';
+            btn.style.color = '#E1DAB9';
+          }, 1800);
+        }).catch(err => {
+          alert('Failed to copy text: ' + err);
+        });
+      });
+    }
+
+    setupCopyButton('copyClassicBtn', 'classicButtonCode');
+    setupCopyButton('copyCustomBtn', 'customWidgetCode');
+  </script>
+
 </body>
-</html>
+              </html>
