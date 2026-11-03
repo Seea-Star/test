@@ -558,7 +558,6 @@
       display: flex;
     }
 
-    /* Stile specifico per i commenti: senza scatola né padding laterale */
     .comments-details-box {
       display: none;
       flex-direction: column;
@@ -638,6 +637,12 @@
       border-top: 1px dashed rgba(225, 218, 185, 0.3);
       padding-top: 12px;
       margin-top: 6px;
+    }
+
+    /* Stile per fare in modo che il link email abbia lo stesso colore del testo normale */
+    .contact-subtext a {
+      color: #E1DAB9;
+      text-decoration: underline;
     }
 
     .button-section-wrapper {
@@ -1054,6 +1059,7 @@
           <span><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit via Google Form</span>
         </a>
 
+        <!-- Email con il colore del testo normale -->
         <div class="contact-subtext">
           <span>Have questions or need information? Contact me via email at <a href="mailto:Seea-star@proton.me">Seea-star@proton.me</a>!</span>
         </div>
@@ -1624,4 +1630,4 @@
   </script>
 
 </body>
-</html>
+  </html>
