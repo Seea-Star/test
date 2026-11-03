@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMIC-S</title>
+  <link rel="icon" type="image/png" href="https://cosmic-seea.neocities.org/stamp-5.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Script ufficiale di WidgetStar -->
+  <script src="https://u.widget.st/ar.js" async></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #f5f5f7;
+      background-image: 
+        linear-gradient(#e1e1e6 1px, transparent 1px),
+        linear-gradient(90deg, #e1e1e6 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #111111;
+      font-family: 'Quicksand', sans-serif;
+      padding: 30px 15px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Il contenitore principale ora fa da layout diretto senza sfondo bianco né bordi */
+    .site-wrapper {
+      max-width: 980px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+    }
+
+    .top-banner {
+      background: #111111;
+      border: 2px solid #111111;
+      border-radius: 20px;
+      padding: 14px 25px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      box-shadow: 4px 4px 0px #F3EEDA;
+    }
+
+    .top-banner h1 { 
+      font-size: 3.5rem; 
+      font-weight: 800; 
+      letter-spacing: 3px; 
+      color: #ffffff;
+      text-align: left;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr) minmax(160px, 220px);
+      gap: 16px;
+      align-items: stretch;
+      padding-bottom: 5px;
+      width: 100%;
+    }
+
+    .col-left, .col-center, .col-right {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-width: 0;
+      gap: 16px;
+    }
+
+    .paper-note-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .paper-note-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.15));
+    }
+
+    .box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+    }
+    .box-header {
+      background: #f0f0f3;
+      border-bottom: 2px solid #111111;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .box-header-accent {
+      background: #F3EEDA;
+      border-bottom: 2px solid #111111;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111111;
+    }
+    .box-body { padding: 14px; }
+
+    .box-dark {
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 4px 4px 0px #F3EEDA; 
+    }
+    .box-dark .box-header {
+      background: #222222;
+      color: #ffffff;
+      border-bottom: 2px solid #444444;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* CONTROLLI E TESTO CALENDARIO */
+    .cal-nav-btn {
+      background: #222222;
+      color: #F3EEDA;
+      border: 1px solid #F3EEDA;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.65rem;
+      padding: 2px 5px;
+      line-height: 1;
+      user-select: none;
+      transition: background 0.1s;
+    }
+    .cal-nav-btn:hover {
+      background: #F3EEDA;
+      color: #111111;
+    }
+
+    .receipt-box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      padding: 18px 14px;
+      box-shadow: 4px 4px 0px #111111;
+      transform: rotate(-2deg);
+      transition: transform 0.2s ease;
+    }
+    .receipt-box:hover { transform: rotate(0deg) scale(1.01); }
+    .receipt-title { text-align: center; font-weight: 800; font-size: 0.85rem; }
+    .receipt-dash { border: none; border-top: 2px dashed #111; margin: 10px 0; }
+
+    .receipt-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .receipt-menu-list a {
+      color: #111;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.78rem;
+      display: block;
+      padding: 8px 10px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .receipt-menu-list a.active, .receipt-menu-list a:hover {
+      background: #F3EEDA;
+      color: #111111;
+    }
+
+    .receipt-barcode {
+      text-align: center;
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* RECTANGOLINO GIORNO OGGI CLICCABILE */
+    .calendar-graphic-dark { 
+      width: 36px; height: 36px; border: 2px solid #F3EEDA; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #F3EEDA;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+    .calendar-graphic-dark:hover {
+      transform: scale(1.08);
+    }
+    .calendar-graphic-dark:active {
+      transform: scale(0.95);
+    }
+    .calendar-graphic-top-dark { background: #F3EEDA; height: 10px; width: 100%; }
+    .calendar-graphic-body-dark { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; }
+
+    .mini-calendar-dark { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
+    .mini-calendar-dark th, .mini-calendar-dark td { padding: 4px 2px; border: none; color: #ffffff; vertical-align: middle; }
+    .mini-calendar-dark th { 
+      background: #F3EEDA; 
+      color: #111111; 
+      font-size: 0.6rem; 
+      font-weight: 800; 
+      border-radius: 4px; 
+    }
+    .mini-calendar-dark td.today-dark { background: #F3EEDA; color: #111111; font-weight: 800; border-radius: 4px; }
+
+    /* ICONE TORTA COMPLEANNO */
+    .cake-icon {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    .cake-icon-highlight {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      vertical-align: middle;
+      display: inline-block;
+      filter: drop-shadow(0 0 2px #111111);
+    }
+
+    .pixel-clock-box-dark {
+      background: #111;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 4px 4px 0px #F3EEDA;
+    }
+    .pixel-clock-time-dark {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      color: #F3EEDA;
+      letter-spacing: 1px;
+    }
+
+    .ipod-player-box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+    }
+    .ipod-player-inner {
+      text-align: center;
+      padding: 12px 10px;
+    }
+    .ipod-screen-clean { 
+      background: #222; 
+      color: #fff; 
+      border: 2px solid #444; 
+      border-radius: 12px; 
+      padding: 12px 10px; 
+      font-size: 0.78rem; 
+      font-weight: 700; 
+      margin-bottom: 12px; 
+      min-height: 55px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .ipod-controls-clean { 
+      display: flex; 
+      justify-content: center; 
+      gap: 12px; 
+      align-items: center; 
+    }
+    .ipod-btn-ctrl-clean { 
+      background: #222; 
+      color: #fff;
+      border: 2px solid #555; 
+      border-radius: 50%; 
+      width: 36px; 
+      height: 36px; 
+      font-size: 0.8rem; 
+      font-weight: 800; 
+      cursor: pointer; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      box-shadow: 2px 2px 0px #444; 
+      transition: transform 0.1s ease;
+    }
+    .ipod-btn-ctrl-clean:active { 
+      transform: translate(1px, 1px); 
+      box-shadow: 1px 1px 0px #444; 
+    }
+
+    .nav-box-btn {
+      width: 100%;
+      background: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      transition: transform 0.1s ease;
+      text-decoration: none;
+      color: #111;
+      display: block;
+    }
+    .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
+    .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #222; }
+
+    .nav-box-btn-dark {
+      width: 100%;
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px #F3EEDA; 
+      text-align: center;
+      transition: transform 0.1s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .nav-box-btn-dark:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0px #F3EEDA; }
+    .nav-box-btn-dark:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #F3EEDA; }
+
+    /* WIDGET COSMIC CLUB CON SFONDO STELLATO E OMBRA CREMA */
+    .cosmic-club-widget {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #000000;
+      border: 2px solid #E1DAB9;
+      border-radius: 13px;
+      box-shadow: 4px 4px 0px #E1DAB9;
+      background-image: 
+        radial-gradient(#FFFFFF 1.3px, transparent 1.3px),
+        radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px),
+        radial-gradient(#FFFFFF 0.7px, transparent 0.7px);
+      background-size: 110px 110px, 160px 160px, 75px 75px;
+      background-position: 0 0, 50px 80px, 25px 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .cosmic-club-widget:active {
+      transform: translate(4px, 4px) !important;
+      box-shadow: 1px 1px 0px #E1DAB9 !important;
+    }
+    .cosmic-club-widget img {
+      width: 75%;
+      height: 75%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* WIDGET MY STAMPS CON ANIMAZIONE FLUIDA */
+    .stamps-clean-widget {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .stamps-clean-widget img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      display: block;
+      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+      opacity: 1;
+      transform: scale(1);
+      filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.15));
+    }
+    .stamps-clean-widget img.fade-out {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    .stamps-clean-widget:hover img {
+      transform: scale(1.05);
+    }
+
+    /* PULSANTI E LINK SEZIONI */
+    .btn-cream-large {
+      width: 100%;
+      flex: 1;
+      background: #F3EEDA;
+      color: #111111;
+      border: 2px solid #111;
+      border-radius: 13px;
+      padding: 16px 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-cream-large:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #111;
+    }
+    .btn-cream-large:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #111;
+    }
+
+    .btn-dark-large {
+      width: 100%;
+      flex: 1;
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111;
+      border-radius: 13px;
+      padding: 16px 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #F3EEDA;
+      text-align: center;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-dark-large:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0px #F3EEDA;
+    }
+    .btn-dark-large:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #F3EEDA;
+    }
+
+    .btn-white-large {
+      width: 100%;
+      flex: 1;
+      background: #ffffff;
+      color: #111111;
+      border: 2px solid #111;
+      border-radius: 13px;
+      padding: 16px 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-white-large:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #111;
+      background: #fafafa;
+    }
+    .btn-white-large:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #111;
+    }
+
+    /* PULSANTI SOCIAL CIRCOLARI */
+    .social-buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 5px;
+      padding-top: 20px;
+      border-top: 2px dashed #ddd;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 2px #111111, 3px 3px 0px #111111;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      cursor: pointer;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: inset 0 0 0 2px #111111, 5px 5px 0px #111111;
+    }
+
+    .social-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: inset 0 0 0 2px #111111, 2px 2px 0px #111111;
+    }
+
+    .social-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+    }
+
+    @media screen and (max-width: 768px) {
+      body { padding: 10px 5px; }
+      .top-banner h1 { font-size: 2.2rem; }
+      .grid-container { grid-template-columns: 100%; gap: 16px; }
+      .col-left, .col-center, .col-right { gap: 16px; }
+      .receipt-box { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="home-view" class="site-wrapper">
+
+    <header class="top-banner">
+      <h1>COSMIC-S</h1>
+    </header>
+
+    <div class="grid-container">
+
+      <aside class="col-left">
+        <div class="receipt-box">
+          <div class="receipt-title">.☘︎ ݁˖ MENU ☰ ❞</div>
+          <hr class="receipt-dash">
+          <ul class="receipt-menu-list">
+            <li><a class="active">˙ᵕ˙ HOME</a></li>
+            <li><a href="https://cosmic-seea.neocities.org/Updates">UPDATES ✦</a></li>
+            <li><a href="https://seea-star.github.io/Cosmic-S-Blog/">BLOG ✐ᝰ</a></li>
+            <li><a href="https://cosmic-seea.neocities.org/Gallery">GALLERY ⋆˚꩜｡</a></li>
+            <li><a href="https://seea-star.github.io/Cosmic-S-Stories/">⎚-⎚ STORIES</a></li>
+            <li><a href="https://seea-star.github.io/Cosmic-S-Watchlist/">WATCHLIST ⭑.ᐟ</a></li>
+          </ul>
+          <hr class="receipt-dash">
+          <div class="receipt-barcode">
+            <ws-widget type="hc" iid="21196"></ws-widget>
+          </div>
+        </div>
+
+        <div class="box-dark">
+          <div class="box-header">
+            <button class="cal-nav-btn" onclick="changeMonth(-1)" title="Mese precedente">◄</button>
+            <span id="cal-month-title">calendar</span>
+            <button class="cal-nav-btn" onclick="changeMonth(1)" title="Mese successivo">►</button>
+          </div>
+          <div class="box-body">
+            
+            <div class="calendar-graphic-dark" onclick="resetToToday()" title="Clicca per tornare al mese di oggi">
+              <div class="calendar-graphic-top-dark"></div>
+              <div class="calendar-graphic-body-dark" id="cal-day-number">--</div>
+            </div>
+
+            <table class="mini-calendar-dark">
+              <thead>
+                <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
+              </thead>
+              <tbody id="calendar-body">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-header-accent"><span>link_me</span><span>★</span></div>
+          <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+            <div>
+              <a href="https://cosmic-seea.neocities.org/" target="_blank">
+                <img src="https://cosmic-seea.neocities.org/button.gif" alt="My Button" style="width: 88px; height: 31px; display: block; image-rendering: pixelated;" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';">
+              </a>
+            </div>
+            <div style="border: 2px dashed #111; padding: 8px; border-radius: 10px; font-size: 0.65rem; font-family: monospace; width: 100%; background: #fdfdfd; word-break: break-all; text-align: left;">
+              &lt;a href="https://cosmic-seea.neocities.org/" target="_blank"&gt;&lt;img src="https://cosmic-seea.neocities.org/button.gif" alt="Cosmic-S"&gt;&lt;/a&gt;
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <a href="https://cosmic-seea.neocities.org/Webrings" class="nav-box-btn-dark" style="text-decoration: none;">
+            ★ WEBRINGS -&gt;
+          </a>
+        </div>
+      </aside>
+
+      <main class="col-center">
+        <!-- Widget Scratch -->
+        <div style="width: 100%; aspect-ratio: 485 / 402; border-radius: 16px; border: 2px solid #111111; box-shadow: 3px 3px 0px #111111; background: #111; overflow: hidden;">
+          <iframe src="https://scratch.mit.edu/projects/1385798480/embed" allowtransparency="true" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen style="display: block; border: none; width: 100%; height: 100%;"></iframe>
+        </div>
+
+        <!-- RIGA 1 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; align-items: stretch;">
+          <div>
+            <a href="https://cosmic-seea.neocities.org/CosmicClub" target="_blank" class="cosmic-club-widget">
+              <img src="200×200Symbol.png" alt="Cosmic Club Member">
+            </a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px; justify-content: space-between;">
+            <a href="https://cosmic-seea.neocities.org/AboutMe" class="btn-cream-large">
+              𝓐𝓫𝓸𝓾𝓽 𝓜𝓮 -&gt;
+            </a>
+            <a href="#" class="btn-dark-large"></a>
+          </div>
+        </div>
+
+        <!-- RIGA 2 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; align-items: stretch;">
+          <div style="display: flex; flex-direction: column; gap: 16px; justify-content: space-between;">
+            <a href="#" class="btn-white-large"></a>
+            <a href="#" class="btn-cream-large"></a>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <a href="https://seea-star.github.io/Cosmic-S-My-Stamps/" class="stamps-clean-widget" id="stamps-link">
+              <img id="rotating-stamp" src="stamp-1.png" alt="My Stamps">
+            </a>
+          </div>
+        </div>
+
+        <!-- BARRA SOCIAL -->
+        <div class="social-buttons-container">
+          <a href="mailto:seea-star@proton.me" class="social-btn" title="Email">
+            <img src="email.png" alt="Email">
+          </a>
+          <a href="https://pin.it/2o1P4Chan" class="social-btn" title="Pinterest">
+            <img src="pinterest.png" alt="Pinterest">
+          </a>
+          <a href="http://www.youtube.com/@seeastar12" class="social-btn" title="YouTube">
+            <img src="youtube.png" alt="YouTube">
+          </a>
+          <a href="#" class="social-btn" title="Instagram">
+            <img src="instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.tiktok.com/@seeastar12?_r=1&_t=ZN-9A57q58Dexq" class="social-btn" title="TikTok">
+            <img src="tiktok.png" alt="TikTok">
+          </a>
+          <a href="https://www.reddit.com/u/seeastar12/s/IDcd73jfHv" class="social-btn" title="Reddit" target="_blank">
+            <img src="reddit.png" alt="Reddit">
+          </a>
+          <a href="https://www.tumblr.com/seea-star" class="social-btn" title="Tumblr" target="_blank">
+            <img src="tumblr.png" alt="Tumblr">
+          </a>
+          <a href="https://neocities.org/site/cosmic-seea" class="social-btn" title="Neocities Profile">
+            <img src="Senza titolo 19_20260927125733.png" alt="Neocities">
+          </a>
+        </div>
+      </main>
+
+      <aside class="col-right">
+        <div class="paper-note-container">
+          <img src="note.png" alt="Note Paper" class="paper-note-img">
+        </div>
+
+        <div class="pixel-clock-box-dark">
+          <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
+        </div>
+
+        <a href="https://cosmic-s.atabook.org/" target="_blank" class="nav-box-btn" style="display: block; text-decoration: none;">
+          ✎ SIGN GUESTBOOK -&gt;
+        </a>
+
+        <div class="box-dark">
+          <div class="box-header"><span>chat box</span><span>(๑>◡<๑)</span></div>
+          <div class="box-body" style="padding: 10px; background: #111111;">
+            <iframe src="https://www5.cbox.ws/box/?boxid=966010&boxtag=Jzu1YD" width="100%" height="250" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+          </div>
+        </div>
+
+        <div>
+          <div class="ipod-player-box">
+            <div class="ipod-player-inner">
+              <div class="ipod-screen-clean" id="ipod-screen-text">COSMIC-S Player<br><strong>Ready to Play</strong></div>
+              <div style="display:none;">
+                <div id="youtube-player"></div>
+              </div>
+              <div class="ipod-controls-clean">
+                <button class="ipod-btn-ctrl-clean" onclick="prevSong()">&#10094;&#10094;</button>
+                <button class="ipod-btn-ctrl-clean" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+                <button class="ipod-btn-ctrl-clean" onclick="nextSong()">&#10095;&#10095;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <script>
+    const stampsList = [
+      "stamp-1.png", "stamp-2.png", "stamp-21.png", "stamp-22.png", 
+      "stamp-23.png", "stamp-24.png", "stamp-25.png", "stamp-26.png", 
+      "stamp-27.png", "stamp-3.png", "stamp-4.png", "stamp-5.png", 
+      "stamp-6.png", "stamp-7.png", "stamp-8.png"
+    ];
+    
+    let currentStampIndex = 0;
+    const stampImgElement = document.getElementById('rotating-stamp');
+
+    function rotateStamp() {
+      if (!stampImgElement) return;
+      stampImgElement.classList.add('fade-out');
+
+      setTimeout(() => {
+        currentStampIndex = (currentStampIndex + 1) % stampsList.length;
+        stampImgElement.src = stampsList[currentStampIndex];
+        stampImgElement.classList.remove('fade-out');
+      }, 400);
+    }
+
+    setInterval(rotateStamp, 3500);
+
+    let player;
+    let isPlaying = false;
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const screenText = document.getElementById('ipod-screen-text');
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+        height: '200',
+        width: '200',
+        playerVars: {
+          'listType': 'playlist',
+          'list': 'PLCnZsxXddm5W5wSYpaoML1rSXuwtiHAXy',
+          'index': 0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      if (screenText) {
+        screenText.innerHTML = `COSMIC-S Player<br><strong>Ready to Play</strong>`;
+      }
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        if (playPauseBtn) playPauseBtn.innerHTML = "&#10074;&#10074;";
+        try {
+          const videoData = player.getVideoData();
+          if (videoData && videoData.title && screenText) {
+            screenText.innerHTML = `Now Playing:<br><strong>${videoData.title}</strong>`;
+          }
+        } catch(e) {}
+      } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+        isPlaying = false;
+        if (playPauseBtn) playPauseBtn.innerHTML = "&#9654;";
+      }
+    }
+
+    function togglePlay() {
+      if (!player) return;
+      if (isPlaying) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    }
+
+    function nextSong() {
+      if (!player) return;
+      player.nextVideo();
+    }
+
+    function prevSong() {
+      if (!player) return;
+      player.previousVideo();
+    }
+
+    let displayDate = new Date();
+
+    function changeMonth(offset) {
+      displayDate.setMonth(displayDate.getMonth() + offset);
+      generateCalendar();
+    }
+
+    function resetToToday() {
+      displayDate = new Date();
+      generateCalendar();
+    }
+
+    function generateCalendar() {
+      const realToday = new Date();
+      const realDayNumber = realToday.getDate();
+
+      const viewMonth = displayDate.getMonth();
+      const viewYear = displayDate.getFullYear();
+
+      const isCurrentMonthView = (realToday.getFullYear() === viewYear && realToday.getMonth() === viewMonth);
+
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      const monthTitleElem = document.getElementById('cal-month-title');
+      const dayNumElem = document.getElementById('cal-day-number');
+      
+      if (monthTitleElem) {
+        monthTitleElem.innerText = `${monthNames[viewMonth].toLowerCase()} ${viewYear}`;
+      }
+      
+      if (dayNumElem) {
+        dayNumElem.innerText = realDayNumber;
+      }
+
+      const firstDayOfMonth = new Date(viewYear, viewMonth, 1).getDay();
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+      const tbody = document.getElementById('calendar-body');
+      
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      let date = 1;
+      for (let i = 0; i < 6; i++) {
+        let row = document.createElement('tr');
+        let hasDatesInRow = false;
+
+        for (let j = 0; j < 7; j++) {
+          let cell = document.createElement('td');
+          if (i === 0 && j < firstDayOfMonth) {
+            cell.innerText = '';
+          } else if (date > daysInMonth) {
+            cell.innerText = '';
+          } else {
+            const isToday = (isCurrentMonthView && date === realDayNumber);
+            const isBirthday = (viewMonth === 11 && date === 21);
+
+            if (isToday) {
+              cell.classList.add('today-dark');
+            }
+
+            if (isBirthday) {
+              if (isToday) {
+                cell.innerHTML = `<img src="cake.png" alt="Birthday Cake" class="cake-icon-highlight" title="Happy Birthday!">`;
+              } else {
+                cell.innerHTML = `<img src="./cakew.png" alt="Birthday Cake" class="cake-icon" title="Birthday">`;
+              }
+            } else {
+              cell.innerText = date;
+            }
+
+            date++;
+            hasDatesInRow = true;
+          }
+          row.appendChild(cell);
+        }
+        if (hasDatesInRow) {
+          tbody.appendChild(row);
+        }
+      }
+    }
+
+    function updatePixelClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const clockElem = document.getElementById('pixel-clock');
+      if (clockElem) {
+        clockElem.innerText = `${hours}:${minutes}:${seconds}`;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      generateCalendar();
+      updatePixelClock();
+      setInterval(updatePixelClock, 1000);
+    });
+  </script>
+
+</body>
+</html>
