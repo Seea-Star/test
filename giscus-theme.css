@@ -1,6 +1,6 @@
 /*!
  * Custom Cosmic Club Theme for Giscus
- * Adapted from GitHub Dark Dimmed to match Cosmic Club palette
+ * Fully styled with custom solid borders, box-shadows, and Cosmic Club palette
  */
 main {
   /* Syntax Highlighting */
@@ -39,7 +39,7 @@ main {
   --color-btn-text: #E1DAB9;
   --color-btn-bg: #000000;
   --color-btn-border: #E1DAB9;
-  --color-btn-shadow: 0 0 #0000;
+  --color-btn-shadow: 2px 2px 0px #E1DAB9;
   --color-btn-inset-shadow: 0 0 #0000;
   --color-btn-hover-bg: #E1DAB9;
   --color-btn-hover-border: #E1DAB9;
@@ -47,11 +47,11 @@ main {
   --color-btn-active-border: #E1DAB9;
   --color-btn-selected-bg: #000000;
 
-  /* Primary Action Buttons */
+  /* Primary Action Buttons (Invia Commento) */
   --color-btn-primary-text: #000000;
   --color-btn-primary-bg: #E1DAB9;
   --color-btn-primary-border: #E1DAB9;
-  --color-btn-primary-shadow: 0 0 #0000;
+  --color-btn-primary-shadow: 3px 3px 0px #E1DAB9;
   --color-btn-primary-inset-shadow: 0 0 #0000;
   --color-btn-primary-hover-bg: #ffffff;
   --color-btn-primary-hover-border: #ffffff;
@@ -63,20 +63,20 @@ main {
 
   /* Controls & Action Lists */
   --color-action-list-item-default-hover-bg: rgba(225, 218, 185, 0.15);
-  --color-segmented-control-bg: rgba(225, 218, 185, 0.1);
+  --color-segmented-control-bg: #000000;
   --color-segmented-control-button-bg: #000000;
   --color-segmented-control-button-selected-border: #E1DAB9;
 
-  /* Text & Surface Colors (Forzati a color crema #E1DAB9 su sfondo nero) */
+  /* Text & Surface Colors */
   --color-fg-default: #E1DAB9;
   --color-fg-muted: #E1DAB9;
   --color-fg-subtle: #E1DAB9;
   --color-canvas-default: #000000;
   --color-canvas-overlay: #000000;
   --color-canvas-inset: #000000;
-  --color-canvas-subtle: rgba(225, 218, 185, 0.05);
+  --color-canvas-subtle: #000000;
   --color-border-default: #E1DAB9;
-  --color-border-muted: rgba(225, 218, 185, 0.4);
+  --color-border-muted: #E1DAB9;
   --color-neutral-muted: rgba(225, 218, 185, 0.2);
 
   /* Accents & States */
@@ -104,7 +104,7 @@ main .pagination-loader-container {
   background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg);
 }
 
-/* Custom Giscus Layout Rules */
+/* Regole Layout e Posizionamento Giscus */
 .gsc-reactions-count {
   display: none;
 }
@@ -138,20 +138,49 @@ main .gsc-loading-image {
   background-image: url(https://github.githubassets.com/images/mona-loading-dimmed.gif);
 }
 
-/* Forzatura colore del testo e font globale su tutto Giscus */
+/* Stili Personalizzati per Allineamento Totale al Tema del Sito */
 main *, main p, main span, main a, main div {
   color: #E1DAB9 !important;
   font-family: 'Quicksand', sans-serif !important;
 }
 
+/* Box dei commenti e Singoli messaggi con Bordi Solid e Ombre */
+.gsc-comment, .gsc-comment-box {
+  background-color: #000000 !important;
+  border: 2px solid #E1DAB9 !important;
+  border-radius: 14px !important;
+  box-shadow: 4px 4px 0px #E1DAB9 !important;
+  padding: 12px !important;
+}
+
+/* Area di testo per scrivere i commenti */
 .gsc-comment-box-textarea {
   background-color: #000000 !important;
   color: #E1DAB9 !important;
-  border: 1px dashed rgba(225, 218, 185, 0.4) !important;
-  border-radius: 8px !important;
+  border: 2px solid #E1DAB9 !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  outline: none !important;
 }
 
 .gsc-comment-box-textarea:focus {
-  border-style: solid !important;
-  border-color: #E1DAB9 !important;
+  box-shadow: 2px 2px 0px #E1DAB9 !important;
+}
+
+/* Pulsanti con effetto Click e Bordo squadrato */
+.gsc-comment-box-buttons button, .gsc-social-reaction-summary-item {
+  border: 2px solid #E1DAB9 !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  transition: transform 0.1s ease !important;
+}
+
+.gsc-comment-box-buttons button:hover {
+  background-color: #E1DAB9 !important;
+  color: #000000 !important;
+}
+
+.gsc-comment-box-buttons button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: none !important;
 }
