@@ -558,6 +558,18 @@
       display: flex;
     }
 
+    /* Stile specifico per i commenti: senza scatola né padding laterale */
+    .comments-details-box {
+      display: none;
+      flex-direction: column;
+      margin-top: 6px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .comments-details-box.active {
+      display: flex;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-6px); }
       to { opacity: 1; transform: translateY(0); }
@@ -1042,7 +1054,6 @@
           <span><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit via Google Form</span>
         </a>
 
-        <!-- Riferimento al guestbook rimosso, tenuta solo l'email -->
         <div class="contact-subtext">
           <span>Have questions or need information? Contact me via email at <a href="mailto:Seea-star@proton.me">Seea-star@proton.me</a>!</span>
         </div>
@@ -1054,8 +1065,8 @@
         <i class="fa-solid fa-chevron-down" id="commentsChevron"></i>
       </button>
 
-      <!-- Box dei commenti senza frasi o testi superflui -->
-      <div class="join-details-box" id="commentsDetailsBox">
+      <!-- Sezione commenti a larghezza piena, SENZA scatola o bordi ristretti -->
+      <div class="comments-details-box" id="commentsDetailsBox">
         <script src="https://giscus.app/client.js"
                 data-repo="Seea-Star/test"
                 data-repo-id="R_kgDOUchfQg"
@@ -1066,7 +1077,7 @@
                 data-reactions-enabled="1"
                 data-emit-metadata="0"
                 data-input-position="top"
-                data-theme="gruvbox_light"
+                data-theme="gruvbox_dark"
                 data-lang="en"
                 crossorigin="anonymous"
                 async>
