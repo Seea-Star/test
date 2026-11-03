@@ -7,7 +7,7 @@ main {
   --color-prettylights-syntax-comment: #768390;
   --color-prettylights-syntax-constant: #6cb6ff;
   --color-prettylights-syntax-entity: #dcbdfb;
-  --color-prettylights-syntax-storage-modifier-import: #adbac7;
+  --color-prettylights-syntax-storage-modifier-import: #E1DAB9;
   --color-prettylights-syntax-entity-tag: #8ddb8c;
   --color-prettylights-syntax-keyword: #f47067;
   --color-prettylights-syntax-string: #96d0ff;
@@ -67,10 +67,10 @@ main {
   --color-segmented-control-button-bg: #000000;
   --color-segmented-control-button-selected-border: #E1DAB9;
 
-  /* Text & Surface Colors */
+  /* Text & Surface Colors (Forzati a color crema #E1DAB9 su sfondo nero) */
   --color-fg-default: #E1DAB9;
-  --color-fg-muted: rgba(225, 218, 185, 0.7);
-  --color-fg-subtle: rgba(225, 218, 185, 0.5);
+  --color-fg-muted: #E1DAB9;
+  --color-fg-subtle: #E1DAB9;
   --color-canvas-default: #000000;
   --color-canvas-overlay: #000000;
   --color-canvas-inset: #000000;
@@ -138,8 +138,9 @@ main .gsc-loading-image {
   background-image: url(https://github.githubassets.com/images/mona-loading-dimmed.gif);
 }
 
-/* Custom Font & Input Borders to match site theme */
-main * {
+/* Forzatura colore del testo e font globale su tutto Giscus */
+main *, main p, main span, main a, main div {
+  color: #E1DAB9 !important;
   font-family: 'Quicksand', sans-serif !important;
 }
 
