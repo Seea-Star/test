@@ -1,0 +1,156 @@
+/*!
+ * Custom Cosmic Club Theme for Giscus
+ * Adapted from GitHub Dark Dimmed to match Cosmic Club palette
+ */
+main {
+  /* Syntax Highlighting */
+  --color-prettylights-syntax-comment: #768390;
+  --color-prettylights-syntax-constant: #6cb6ff;
+  --color-prettylights-syntax-entity: #dcbdfb;
+  --color-prettylights-syntax-storage-modifier-import: #adbac7;
+  --color-prettylights-syntax-entity-tag: #8ddb8c;
+  --color-prettylights-syntax-keyword: #f47067;
+  --color-prettylights-syntax-string: #96d0ff;
+  --color-prettylights-syntax-variable: #f69d50;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #e5534b;
+  --color-prettylights-syntax-invalid-illegal-text: #E1DAB9;
+  --color-prettylights-syntax-invalid-illegal-bg: #922323;
+  --color-prettylights-syntax-carriage-return-text: #E1DAB9;
+  --color-prettylights-syntax-carriage-return-bg: #ad2e2c;
+  --color-prettylights-syntax-string-regexp: #8ddb8c;
+  --color-prettylights-syntax-markup-list: #eac55f;
+  --color-prettylights-syntax-markup-heading: #E1DAB9;
+  --color-prettylights-syntax-markup-italic: #E1DAB9;
+  --color-prettylights-syntax-markup-bold: #E1DAB9;
+  --color-prettylights-syntax-markup-deleted-text: #ffd8d3;
+  --color-prettylights-syntax-markup-deleted-bg: #78191b;
+  --color-prettylights-syntax-markup-inserted-text: #b4f1b4;
+  --color-prettylights-syntax-markup-inserted-bg: #1b4721;
+  --color-prettylights-syntax-markup-changed-text: #ffddb0;
+  --color-prettylights-syntax-markup-changed-bg: #682d0f;
+  --color-prettylights-syntax-markup-ignored-text: #E1DAB9;
+  --color-prettylights-syntax-markup-ignored-bg: #255ab2;
+  --color-prettylights-syntax-meta-diff-range: #dcbdfb;
+  --color-prettylights-syntax-brackethighlighter-angle: #768390;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #545d68;
+  --color-prettylights-syntax-constant-other-reference-link: #96d0ff;
+
+  /* Standard Buttons */
+  --color-btn-text: #E1DAB9;
+  --color-btn-bg: #000000;
+  --color-btn-border: #E1DAB9;
+  --color-btn-shadow: 0 0 #0000;
+  --color-btn-inset-shadow: 0 0 #0000;
+  --color-btn-hover-bg: #E1DAB9;
+  --color-btn-hover-border: #E1DAB9;
+  --color-btn-active-bg: #E1DAB9;
+  --color-btn-active-border: #E1DAB9;
+  --color-btn-selected-bg: #000000;
+
+  /* Primary Action Buttons */
+  --color-btn-primary-text: #000000;
+  --color-btn-primary-bg: #E1DAB9;
+  --color-btn-primary-border: #E1DAB9;
+  --color-btn-primary-shadow: 0 0 #0000;
+  --color-btn-primary-inset-shadow: 0 0 #0000;
+  --color-btn-primary-hover-bg: #ffffff;
+  --color-btn-primary-hover-border: #ffffff;
+  --color-btn-primary-selected-bg: #E1DAB9;
+  --color-btn-primary-selected-shadow: 0 0 #0000;
+  --color-btn-primary-disabled-text: rgba(225, 218, 185, 0.5);
+  --color-btn-primary-disabled-bg: rgba(225, 218, 185, 0.2);
+  --color-btn-primary-disabled-border: rgba(225, 218, 185, 0.2);
+
+  /* Controls & Action Lists */
+  --color-action-list-item-default-hover-bg: rgba(225, 218, 185, 0.15);
+  --color-segmented-control-bg: rgba(225, 218, 185, 0.1);
+  --color-segmented-control-button-bg: #000000;
+  --color-segmented-control-button-selected-border: #E1DAB9;
+
+  /* Text & Surface Colors */
+  --color-fg-default: #E1DAB9;
+  --color-fg-muted: rgba(225, 218, 185, 0.7);
+  --color-fg-subtle: rgba(225, 218, 185, 0.5);
+  --color-canvas-default: #000000;
+  --color-canvas-overlay: #000000;
+  --color-canvas-inset: #000000;
+  --color-canvas-subtle: rgba(225, 218, 185, 0.05);
+  --color-border-default: #E1DAB9;
+  --color-border-muted: rgba(225, 218, 185, 0.4);
+  --color-neutral-muted: rgba(225, 218, 185, 0.2);
+
+  /* Accents & States */
+  --color-accent-fg: #E1DAB9;
+  --color-accent-emphasis: #E1DAB9;
+  --color-accent-muted: rgba(225, 218, 185, 0.4);
+  --color-accent-subtle: rgba(225, 218, 185, 0.15);
+  --color-success-fg: #57ab5a;
+  --color-attention-fg: #c69026;
+  --color-attention-muted: rgba(198, 144, 38, 0.4);
+  --color-attention-subtle: rgba(198, 144, 38, 0.15);
+  --color-danger-fg: #e5534b;
+  --color-danger-muted: rgba(229, 83, 75, 0.4);
+  --color-danger-subtle: rgba(229, 83, 75, 0.15);
+  --color-primer-shadow-inset: 0 0 #0000;
+  --color-scale-gray-7: #000000;
+  --color-scale-blue-8: rgba(225, 218, 185, 0.2);
+
+  /* Extensions */
+  --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+}
+
+main .pagination-loader-container {
+  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg);
+}
+
+/* Custom Giscus Layout Rules */
+.gsc-reactions-count {
+  display: none;
+}
+
+.gsc-timeline {
+  flex-direction: column-reverse;
+}
+
+.gsc-header {
+  padding-bottom: 1rem;
+}
+
+.gsc-comments > .gsc-header {
+  order: 1;
+}
+
+.gsc-comments > .gsc-comment-box {
+  margin-bottom: 1rem;
+  order: 2;
+}
+
+.gsc-comments > .gsc-timeline {
+  order: 3;
+}
+
+.gsc-homepage-bg {
+  background-color: #000000;
+}
+
+main .gsc-loading-image {
+  background-image: url(https://github.githubassets.com/images/mona-loading-dimmed.gif);
+}
+
+/* Custom Font & Input Borders to match site theme */
+main * {
+  font-family: 'Quicksand', sans-serif !important;
+}
+
+.gsc-comment-box-textarea {
+  background-color: #000000 !important;
+  color: #E1DAB9 !important;
+  border: 1px dashed rgba(225, 218, 185, 0.4) !important;
+  border-radius: 8px !important;
+}
+
+.gsc-comment-box-textarea:focus {
+  border-style: solid !important;
+  border-color: #E1DAB9 !important;
+}
